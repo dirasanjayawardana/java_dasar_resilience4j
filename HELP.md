@@ -16,5 +16,4 @@ Merupakan library yang sangat ringan, digunakan untuk meningkatkan kemampuan fun
 - test/RetryConfigTest.java
 - test/RetryRegistryTest.java
 - test/RateLimiterTest.java
-Rate Limiter merupakan module di Resilience4J untuk membatasi jumlah eksekusi pada waktu tertentu
-jika jumlah eksekusi melebihi batas yang sudah ditentukan, secara otomatis akan throw exception RequestNotPermitted
+- test/BulkheadTest.java
