@@ -58,8 +58,8 @@ public class BulkheadTest {
   @Test
   void testSemaphoreConfig() throws InterruptedException {
     BulkheadConfig config = BulkheadConfig.custom()
-        .maxConcurrentCalls(5) // defaultnya 25 eksekusi
-        .maxWaitDuration(Duration.ofSeconds(5)) // defaultnya 0s
+        .maxConcurrentCalls(5) // maksimal eksekusi dalam satu waktu, defaultnya 25 eksekusi
+        .maxWaitDuration(Duration.ofSeconds(5)) // waktu tunggu ketika eksekusi sedang penuh, defaultnya 0s
         .build();
 
     Bulkhead bulkhead = Bulkhead.of("dirapp", config);
