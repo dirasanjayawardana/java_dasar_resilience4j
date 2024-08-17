@@ -19,3 +19,4 @@ Merupakan library yang sangat ringan, digunakan untuk meningkatkan kemampuan fun
 - test/BulkheadTest.java
 - test/TimeLimiterTest.java
 - test/CircuitBreakerTest.java
+- test/DecoratorsTest.java

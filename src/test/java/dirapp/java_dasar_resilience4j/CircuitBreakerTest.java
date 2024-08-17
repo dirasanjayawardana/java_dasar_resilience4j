@@ -43,11 +43,15 @@ public class CircuitBreakerTest {
   @Test
   void circuitBreakerConfig() {
     CircuitBreakerConfig config = CircuitBreakerConfig.custom()
-        .slidingWindowType(CircuitBreakerConfig.SlidingWindowType.COUNT_BASED)
-        .failureRateThreshold(10f)
-        .slidingWindowSize(10)
-        .minimumNumberOfCalls(10)
+        .slidingWindowType(CircuitBreakerConfig.SlidingWindowType.COUNT_BASED) // menentukan mode cisrcuit breaker berdasarkan hitungan, defaultnya menggunakan hitungan dengan jumlah minimal 100
+        .failureRateThreshold(10f) // minimal persentase error rate yang membuat state circuit breaker menjadi OPEN, defaultnya 50%
+        .slidingWindowSize(10) // jumlah sliding window yang direcord pada waktu state CLOSED, defaultnya 100
+        .minimumNumberOfCalls(10) // jumlah minimal eksekusi sebelum error rate dihitung, defaultnya 100
+        // .waitDurationInOpenState() // waktu tunggu agar OPEN menjadi HALF_OPEN, defaultnya 6000ms
+        // .permittedNumberOfCallsInHalfOpenState() // jumlah eksekusi yang diperbolehkan ketika Circuit Breaker HALF_OPEN, defaultnya 10
+        // .maxWaitDurationInHalfOpenState() // jumlah maksimal menunggu di HALF_OPEN untuk kembali OPEN, defaultnya 0, artinya menunggu tak terbatas
         .build();
+
     CircuitBreaker circuitBreaker = CircuitBreaker.of("dirapp", config);
 
     for (int i = 0; i < 200; i++) {
@@ -61,6 +65,8 @@ public class CircuitBreakerTest {
   }
 
 
+  // Registry merupakan tempat untuk menyimpan object-object dari Resilience4J (mirip seprti Pooling di java database)
+  // dengan menggunakan Registry, bisa menggunakan ulang object yang sudah dibuat, tanpa harus buat baru
   @Test
   void circuitBreakerRegistry() {
     CircuitBreakerConfig config = CircuitBreakerConfig.custom()
