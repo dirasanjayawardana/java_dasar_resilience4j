@@ -17,3 +17,5 @@ Merupakan library yang sangat ringan, digunakan untuk meningkatkan kemampuan fun
 - test/RetryRegistryTest.java
 - test/RateLimiterTest.java
 - test/BulkheadTest.java
+- test/TimeLimiterTest.java
+- test/CircuitBreakerTest.java

@@ -116,6 +116,8 @@ public class BulkheadTest {
   }
 
 
+  // Registry merupakan tempat untuk menyimpan object-object dari Resilience4J (mirip seprti Pooling di java database)
+  // dengan menggunakan Registry, bisa menggunakan ulang object yang sudah dibuat, tanpa harus buat baru
   @Test
   void testThreadPoolRegistry() throws InterruptedException {
     ThreadPoolBulkheadConfig config = ThreadPoolBulkheadConfig.custom()
